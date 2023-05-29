@@ -1,0 +1,38 @@
+<!-- bs5-card-head-foot -->
+<div class="card mt-4">
+  <div class="card-header">Lista de libros en existencia</div>
+  <div class="card-body">
+    <!-- bs5-table-default -->
+    <div class="table-responsive">
+      <table class="table table-primary">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let column of tableColumns">
+              {{ column }}
+            </th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of listOfBooks">
+            <td *ngFor="let column of tableColumns">
+              {{ book[column.toLocaleLowerCase()] }}
+            </td>
+            <td>
+              <a
+                [routerLink]="['/editar-libro/', book._id]"
+                class="btn btn-success"
+                >Editar</a
+              >
+              <a
+                [routerLink]="['/borrar-libro/', book._id]"
+                class="btn btn-danger"
+                >Borrar</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
